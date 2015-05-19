@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 20150518235115) do
   create_table "events", force: :cascade do |t|
     t.text     "title"
     t.text     "description"
+    t.text     "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
