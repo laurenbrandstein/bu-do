@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  # Set homepage to be Events listing page
+  root 'events#index'
+
+  # Create all required routes for manipulating and displaying Events
+  resources :events
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
