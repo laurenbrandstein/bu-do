@@ -1,0 +1,68 @@
+<script type="text/javascript">
+  var App = {
+
+    /* Change these settings to alter the way the map is rendered */
+    //
+    startingLatitude: 40.706709,        // The latitude the map should open on
+    startingLongitude: -73.923516,      // The longitude the map should open on
+    infoWindowTitleAttribute: 'title',   // The attribute on the collection being passed to this partial to use for the title
+    infoWindowBodyAttribute: 'description', // The attribute on the collection being passed to this partial to use for the body
+    //
+    /* Do not alter anything below this line */
+
+    places: [],
+
+    initialize: function() {
+      var mapOptions = {
+        zoom: 3,
+        center: new google.maps.LatLng(App.startingLatitude, App.startingLongitude)
+      };
+
+      App.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      App.places = <%= collection.to_json.html_safe %>;
+      App.addMarkers();
+    },
+
+    addMarkers: function() {
+      for (i = 0; i < App.places.length; i++) {
+        var place = App.places[i];
+        place.marker = new google.maps.Marker({
+          map: App.map,
+          position: new google.maps.LatLng(place.latitude, place.longitude),
+          infoWindow: new google.maps.InfoWindow(),
+        });
+
+        App.addMarkerClickEvent(place);
+      }
+    },
+
+    moveToMarker: function(marker) {
+      App.map.panTo(marker.position);
+      App.map.setZoom(15);
+    },
+
+    closeAllInfoWindows: function() {
+      for (i = 0; i < App.places.length; i++) {
+        App.places[i].marker.infoWindow.close();
+      }
+    },
+
+    addMarkerClickEvent: function(place) {
+      google.maps.event.addListener(place.marker, 'click', (function(place) {
+        return function() {
+          App.closeAllInfoWindows();
+          place.marker.infoWindow.setContent(
+            '<h4>' + place[App.infoWindowTitleAttribute] + '</h4>' + "\n" +
+            '<p>' + place[App.infoWindowBodyAttribute] + '</p>'
+          );
+          place.marker.infoWindow.open(App.map, place.marker);
+          App.moveToMarker(place.marker);
+        };
+      })(place));
+    },
+  };
+
+  google.maps.event.addDomListener(window, 'load', App.initialize)
+</script>
+ 
+<div id="map-canvas" style="height:500px;"></div>
