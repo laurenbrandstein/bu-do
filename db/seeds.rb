@@ -43,6 +43,20 @@
         address: '151 West 26th Street, Room 607 New York, NY',
         latitude: nil,
         longitude: nil
+      },
+      {
+        title: 'Duncan Stewart In Dayton, Ohio',
+        description: 'Duncan will be exploring the theme of the year and reviewing basic Bujinkan concepts surrounding Kihon and the Sanshin.',
+        address: 'Dayton Bujinkan Dojo Inc, 5028 Hempstead Station Dr, Dayton, Ohio 45429',
+        latitude: nil,
+        longitude: nil
+      },
+      {
+        title: 'Jeff Christian, Close Quarter Combat',
+        description: 'Jeff is the head of the Muzoza dojo in New York City. He has been taining those of us in the St. Louis area for almost 20 years. He is easy to understand and had great combat skills. He travels to Japan at least annually. He is a 15th dan in Bujinkan under Dr. Masaaki Hatsumi of Noda, Japan.',
+        address: 'Boyer Academy of Martial Arts, 1812 West Pierce Blvd., Wentzville, MO 63385',
+        latitude: nil,
+        longitude: nil
       }
     ]
   )
