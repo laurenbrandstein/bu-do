@@ -2,18 +2,18 @@
 <hr />
 <br />
 <div class="row">
-  <h2>Description:</h2>
+  <h2>What:</h2>
   <p><%= @event.description %></p>
 
-  <h4>Who:</h4>
-  <h5>Instructors:</h5>
+  <h2>Who:</h2>
+  <h3>Instructors:</h3>
   <ul>
   <% @event.instructors.each do |instructor| %>
     <li><%= "#{instructor.first_name} #{instructor.last_name}" %></li>
     <!-- <p><%# link_to user.name, user_path(user) %></p> -->
   <% end %>
   </ul>
-  <h5>Organizers:</h5>
+  <h3>Organizers:</h3>
   <ul>
   <% @event.organizers.each do |organizer| %>
     <li><%= "#{organizer.first_name} #{organizer.last_name}" %></li>
@@ -21,7 +21,7 @@
   <% end %>
   </ul>
 
-  <h4>Where:</h4>
+  <h2>Where:</h2>
   <p><%= @event.address %></p>
 
   <!-- <h4>When:</h4> -->
